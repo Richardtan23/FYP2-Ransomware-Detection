@@ -52,49 +52,55 @@ The system runs on **FastAPI** with an HTML/CSS/JS frontend.
 
 ## 📁 3. Project Structure
 
+## 3. Project Structure
+
+```text
 FYP2/
-├── .env.example # Environment template
-├── README.md # Project documentation
-├── requirements.txt # Python dependencies
+├── app.py                # Main FastAPI application
+├── requirements.txt      # Python dependencies
+├── .env.example          # Example environment variables (no secrets)
+├── README.md
+│
+├── static/               # Frontend assets
+│   ├── script.js
+│   └── style.css
+│
+├── templates/            # HTML templates
+│   ├── index.html
+│   └── logs.html
 │
 ├── src/
-│ ├── app.py # FastAPI main app
-│ ├── static/ # JS & CSS
-│ │ ├── script.js
-│ │ └── style.css
-│ ├── templates/ # HTML templates
-│ │ ├── index.html
-│ │ └── logs.html
-│ ├── behav_model.py
-│ ├── static_model.py
-│ ├── pe_static_extractor.py
-│ ├── extract_behavior_features.py
-│ ├── aggregate_behavior_features.py
-│ ├── explain_utils.py
-│ ├── utils.py
-│ └── db/
-│ ├── connection.py # MySQL helper + logging
-│ └── schema.sql # SQL table for detection_logs
+│   └── db/
+│       ├── connection.py # Database connection helper
+│       └── schema.sql    # SQL schema for detection_logs table
 │
 ├── models/
-│ └── optimized/ # Final tuned ML models
-│ ├── static_xgb_tuned.joblib
-│ ├── static_xgb_feature_names.joblib
-│ ├── static_xgb_threshold.json
-│ ├── behav_catboost_tuned.cbm
-│ ├── behav_feature_names.json
-│ ├── behav_threshold.json
-│ └── behav_lgbm.joblib
+│   └── optimized/        # Trained models used in the system
+│       ├── static_xgb_tuned.joblib
+│       ├── static_xgb_feature_names.joblib
+│       ├── static_xgb_threshold.json
+│       ├── behav_catboost_tuned.cbm
+│       ├── behav_feature_names.json
+│       ├── behav_threshold.json
+│       └── behav_lgbm.joblib
 │
-├── notebooks/ # Training & evaluation notebooks
-│ ├── 01_inspect_datasets.ipynb
-│ ├── 02_evaluate_models.ipynb
-│ ├── 03_model_optimization.ipynb
-│ ├── 04_compare_final_models.ipynb
-│ ├── 05_test.ipynb
-│ ├── 06_train_behav_lgm.ipynb
-│ ├── 07_eval_static.ipynb
-│ └── sanity_check.ipynb
+├── notebooks/            # Model training & evaluation (for reference)
+│   ├── 01_inspect_datasets.ipynb
+│   ├── 02_evaluate_models.ipynb
+│   ├── 03_model_optimization.ipynb
+│   ├── 04_compare_final_models.ipynb
+│   ├── 05_test.ipynb
+│   ├── 06_train_behav_lgm.ipynb
+│   ├── 07_eval_static.ipynb
+│   └── sanity_check.ipynb
+│
+├── aggregate_behavior_features.py
+├── behav_model.py
+├── explain_utils.py
+├── extract_behavior_features.py
+├── pe_static_extractor.py
+├── static_model.py
+├── utils.py
 │
 ├── demo_static_sample.csv
 ├── demo_static_malicious.csv
@@ -102,7 +108,6 @@ FYP2/
 ├── demo_behav_benign.csv
 ├── demo_fusion_staticMal_behavMal.csv
 └── demo_fusion_staticMal_behavSafe.csv
-
 
 ---
 
