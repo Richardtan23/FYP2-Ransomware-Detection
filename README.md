@@ -165,7 +165,7 @@ This project is for academic use only.
 
 👤 7. Author
 
-Tan Li Cherk
+Tan Li Cherk-0137446
 Final Year Project 2
 Ransomware Detection System Using Machine Learning
 UOW Malaysia
