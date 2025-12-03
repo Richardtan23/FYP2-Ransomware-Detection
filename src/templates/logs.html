@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Logs</title>
+</head>
+<body>
+    <h2>Scan Logs</h2>
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Filename</th>
+                <th>Model</th>
+                <th>Probability</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody id="logs-body"></tbody>
+    </table>
+
+    <script>
+        async function loadLogs() {
+            const response = await fetch("/logs");
+            const logs = await response.json();
+
+            const tbody = document.getElementById("logs-body");
+
+            logs.forEach(log => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${log.timestamp}</td>
+                    <td>${log.filename}</td>
+                    <td>${log.model}</td>
+                    <td>${log.probability}</td>
+                    <td>${log.prediction}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        loadLogs();
+    </script>
+</body>
+</html>

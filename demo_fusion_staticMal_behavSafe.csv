@@ -1,0 +1,6 @@
+Time,Protcol,Flag,Family,Clusters,SeddAddress,ExpAddress,BTC,USD,Netflow_Bytes,IPaddress,Threats,Port,Prediction
+41,TCP,APS,TowerWeb,1,1DA11mPS,1BonuSr7,2,1,444,C,Spam,5062,A
+45,TCP,APS,TowerWeb,1,1DA11mPS,1BonuSr7,2,1,465,C,Spam,5062,A
+49,TCP,APS,TowerWeb,1,1DA11mPS,1BonuSr7,2,1,486,C,Spam,5062,A
+53,TCP,APS,TowerWeb,1,1DA11mPS,1BonuSr7,2,1,507,C,Spam,5062,A
+57,TCP,APS,TowerWeb,1,1DA11mPS,1BonuSr7,2,1,528,C,Spam,5062,A

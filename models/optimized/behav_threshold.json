@@ -1,0 +1,10 @@
+{
+  "model_type": "lightgbm",
+  "best_threshold_malicious": 0.35,
+  "label_mapping": {
+    "A": 0,
+    "S": 1,
+    "SS": 1
+  },
+  "note": "Threshold tuned on validation set for F1 (class 1 = malicious)"
+}

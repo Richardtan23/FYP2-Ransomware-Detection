@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WannaCry Ransomware Detector</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="dashboard">
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <header class="header">
+      <div class="title">
+        <h1>🛡 WannaCry Ransomware Detector</h1>
+        <p class="subtitle">Static + Behavioral ML | Early Threat Detection</p>
+      </div>
+      <nav class="nav-tabs">
+        <button id="tab-scan" class="nav-btn active">Scan</button>
+        <button id="historyBtn" class="nav-btn">History</button>
+        <button id="tab-education" class="nav-btn">WannaCry Info</button>
+      </nav>
+    </header>
+
+    <!-- ===== SCAN PANEL ===== -->
+    <section id="scan-panel" class="scan-section">
+      <!-- LEFT: Upload -->
+      <div class="scan-left card">
+        <h2>File Upload</h2>
+
+        <!-- Drag & Drop Zone -->
+        <div id="dropZone" class="drop-zone">
+          <!-- hint (default) -->
+          <div class="drop-hint" id="dropHint">
+            <div>Drag & Drop Files Here</div>
+            <div class="or">or</div>
+            <button id="browseBtn" type="button" class="primary-btn small">Browse Files</button>
+          </div>
+
+          <!-- selected file preview (shown after selection) -->
+          <div id="selectedWrap" class="selected-file hidden">
+            <span id="selectedIcon">📄</span>
+            <span id="selectedName">No file</span>
+            <button id="clearFile" type="button" class="ghost-btn small" aria-label="Clear selected file">✕</button>
+          </div>
+
+          <!-- the real input -->
+          <input id="fileInput" type="file" accept=".csv,.xlsx,.exe,.dll" class="hidden" />
+        </div>
+
+        <!-- Scan button only -->
+        <div class="upload-form">
+          <button id="scanBtnMain" type="button" class="btn-primary small">Scan</button>
+          <p id="scan-progress" class="hint hidden" style="margin-top:.5rem;">
+            Waiting to scan...
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Result -->
+      <div class="scan-right card">
+        <h2>Scan Results</h2>
+        <div id="resultBox" class="result-box result-box-idle">
+          <div id="fileName">No file scanned yet.</div>
+
+          <div id="verdictLine" class="result-line hidden">
+            Verdict: <span id="verdictText"></span>
+          </div>
+
+          <div id="confidenceLine" class="result-line hidden">
+            Confidence: <span id="confidenceText"></span>
+            <span id="riskBand"></span>
+          </div>
+
+          <div id="scan-result-details" class="result-details hidden">
+            <h3 class="result-details-title">Detection Analysis</h3>
+            <p id="result-final"></p>
+            <p id="result-band"></p>
+            <p id="result-summary"></p>
+          </div>
+
+
+          <div id="reasonsLine" class="result-line hidden">
+            Why:
+            <ul id="reasonsList"></ul>
+          </div>
+
+          <div class="result-actions">
+            <button id="download-report-btn" class="ghost-btn small" disabled>
+              Download Report (PDF)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WANNACRY EDUCATION PANEL ===== -->
+    <section id="education-panel" class="card hidden" style="margin-top:1.5rem;">
+      <h2 class="text-xl font-semibold mb-4">🚨 About WannaCry Ransomware</h2>
+      <p class="mb-2">
+        WannaCry is a ransomware family that spread globally in May 2017 by
+        exploiting the EternalBlue vulnerability in Microsoft’s SMB protocol.
+      </p>
+      <ul class="list-disc ml-6 mb-4">
+        <li>Encrypts files and often appends extensions like <code>.WCRY</code>.</li>
+        <li>Demands Bitcoin ransom payments (typically USD $300–$600).</li>
+        <li>Spreads laterally across networks via vulnerable SMB services.</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold mb-2">🔍 How this detector works</h3>
+      <ul class="list-disc ml-6">
+        <li><strong>Static analysis engine:</strong> analyses PE / binary metadata or extracted features.</li>
+        <li><strong>Behavioral model:</strong> analyses network flow features (Time, Port, BTC/USD, Threats, etc.).</li>
+        <li><strong>Fusion layer:</strong> combines available evidence into a final risk score and band.</li>
+      </ul>
+    </section>
+
+    <!-- ===== DETECTION HISTORY MODAL ===== -->
+    <div id="historyModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="flex-row">
+            <h3>Detection History</h3>
+          </div>
+          <button id="closeHistory" class="close-btn" aria-label="Close">✕</button>
+        </div>
+
+        <div class="flex-row" style="justify-content: space-between; align-items: center; margin-bottom: .5rem;">
+          <div id="historyEmpty" class="hint" style="display:none;margin:.5rem 0 0;">
+            No logs yet. Run a scan to see results here.
+          </div>
+          <select id="history-filter" class="history-filter">
+            <option value="all">All</option>
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+            <option value="365d">Last 12 months</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Filename</th>
+                <th>Verdict</th>
+                <th>Probability</th>
+              </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HISTORY DETAIL MODAL ===== -->
+    <div id="historyDetailModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Scan Details</h3>
+          <button id="closeHistoryDetail" class="close-btn" aria-label="Close">✕</button>
+        </div>
+
+        <div class="detail-body">
+          <p><strong>Filename:</strong> <span id="detail-filename"></span></p>
+          <p><strong>Verdict:</strong> <span id="detail-verdict"></span></p>
+          <p><strong>Probability:</strong> <span id="detail-prob"></span></p>
+          <p><strong>Timestamp:</strong> <span id="detail-time"></span></p>
+        </div>
+
+        <div class="detail-actions">
+          <button id="history-download-btn" class="primary-btn small">
+            Download Report (PDF)
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Load external JS -->
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+FileName,md5Hash,Machine,DebugSize,DebugRVA,MajorImageVersion,MajorOSVersion,ExportRVA,ExportSize,IatVRA,MajorLinkerVersion,MinorLinkerVersion,NumberOfSections,SizeOfStackReserve,DllCharacteristics,ResourceSize,BitcoinAddresses,Benign
+VirusShare_f90d04370eba0d21ce9c3474d32fa650,f90d04370eba0d21ce9c3474d32fa650,332,0,0,0,5,0,0,28672,9,0,5,1048576,32768,125356,0,0
+VirusShare_d3931b8f1cfa66d6230a049188baa7ea,d3931b8f1cfa66d6230a049188baa7ea,332,0,0,0,4,0,0,8520,6,0,2,1048576,0,0,0,0
+VirusShare_c8034a80f4235a9b22adebaf7e2a3ce5,c8034a80f4235a9b22adebaf7e2a3ce5,332,0,0,0,4,256,0,13332,1,1,5,1048576,0,0,0,0
+VirusShare_923cf601e1ca56ee09e971adc2e0d065,923cf601e1ca56ee09e971adc2e0d065,332,0,0,0,4,0,0,12288,6,0,3,1048576,0,0,0,0
+VirusShare_01980f0cd541e134cca1266cd5456744,01980f0cd541e134cca1266cd5456744,332,28,65680,0,4,66768,70,65536,8,0,5,1048576,0,2008,0,0

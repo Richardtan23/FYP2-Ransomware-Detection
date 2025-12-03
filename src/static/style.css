@@ -1,0 +1,292 @@
+/* === Base & Typography === */
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(circle at 25% 20%, #0d1025 0%, #050510 80%);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.hidden { display: none !important; }
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* === Header / Navbar === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #a7a7ff;
+  margin-top: 0.3rem;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #bbb;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.nav-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.nav-btn.active {
+  background: linear-gradient(120deg, #5e50ff, #8d6bff);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* === Scan Layout === */
+.scan-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  background: rgba(20, 20, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* === Upload Box === */
+.upload-box {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-bottom: 1.2rem;
+  color: #ccc;
+  transition: all 0.3s ease;
+  background: rgba(30, 30, 60, 0.4);
+}
+.upload-box:hover {
+  border-color: #6b5cff;
+  background: rgba(40, 35, 85, 0.6);
+  box-shadow: 0 0 20px rgba(120, 100, 255, 0.4);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, #6254ff, #8c5fff);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(100, 80, 255, 0.4);
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover { transform: scale(1.03); }
+.btn-primary.small { padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+
+.hint {
+  font-size: 0.8rem;
+  color: #9a9acc;
+  margin-top: 0.3rem;
+}
+
+/* === Scan Result Box === */
+.result-box {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  min-height: 130px;
+  background: rgba(10, 10, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 15px rgba(0, 255, 130, 0);
+  transition: box-shadow 0.4s ease, border 0.4s ease;
+}
+
+.result-box-idle {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.result-box-safe {
+  border-color: rgba(0, 255, 120, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 120, 0.4);
+}
+
+.result-box-bad {
+  border-color: rgba(255, 60, 80, 0.5);
+  box-shadow: 0 0 25px rgba(255, 60, 80, 0.5);
+}
+
+.result-line {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+/* === Modal (History) === */
+.modal-overlay{
+  position: fixed; inset: 0;
+  display: none;                 /* <-- was flex */
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.85);
+  z-index: 99;
+}
+.modal-overlay.open{             /* <-- NEW */
+  display: flex;
+}
+.modal {
+  background: #151526;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  width: min(90%, 900px);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.9);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.close-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.table-wrap {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: #e8e8ff;
+}
+
+.history-table th,
+.history-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.history-table th {
+  background: #1a1930;
+  color: #aaaaf0;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+
+.badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+  border: 1px solid;
+}
+
+.badge-good {
+  color: #00ff9c;
+  border-color: rgba(0,255,156,.4);
+  background: rgba(0,255,156,.1);
+}
+
+.badge-bad {
+  color: #ff4d6d;
+  border-color: rgba(255,77,109,.4);
+  background: rgba(255,77,109,.1);
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .scan-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- drag & drop / picker --- */
+.hidden { display: none !important; }
+
+.drop-zone{
+  position: relative;
+  border: 2px dashed rgba(255,255,255,0.18);
+  border-radius: 14px;
+  min-height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.04);
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.drop-zone.dragover{
+  border-color: rgba(141,107,255,0.8);
+  box-shadow: 0 0 0 3px rgba(141,107,255,0.25);
+  background: rgba(141,107,255,0.06);
+}
+.drop-hint{
+  text-align: center;
+  color: #c9c9ff;
+}
+.drop-hint .or{
+  font-size: .85rem;
+  opacity: .8;
+  margin: .35rem 0 .6rem;
+}
+
+.selected-file{
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem;
+  padding: 1rem;
+  color: #e8e8ff;
+}
+#selectedIcon{ font-size: 1.1rem; opacity: .9; }
+#selectedName{
+  flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  opacity: .95;
+}
+
+.ghost-btn{
+  background: none;
+  color: #a9a9ff;
+  border: 1px solid rgba(169,169,255,0.35);
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+

@@ -1,0 +1,32 @@
+{
+  "use_cols": [
+    "Time",
+    "Clusters",
+    "Netflow_Bytes",
+    "BTC",
+    "USD",
+    "Protocol",
+    "Flag",
+    "Threats",
+    "ProtoFlag",
+    "PortBucket",
+    "has_BTC",
+    "has_USD"
+  ],
+  "cat_cols": [
+    "Protocol",
+    "Flag",
+    "Threats",
+    "ProtoFlag",
+    "PortBucket",
+    "has_BTC",
+    "has_USD"
+  ],
+  "num_cols": [
+    "Time",
+    "Clusters",
+    "Netflow_Bytes",
+    "BTC",
+    "USD"
+  ]
+}

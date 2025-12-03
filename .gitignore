@@ -1,0 +1,25 @@
+# Virtual environments
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE settings
+.vscode/
+
+# Secrets / config
+.env
+src/db/.env
+
+# Large or sensitive data
+datasets/
+data_processed/
+
+# Jupyter overhead
+.ipynb_checkpoints/
+notebooks/catboost_info/
+
+# System files
+Thumbs.db
+desktop.ini
